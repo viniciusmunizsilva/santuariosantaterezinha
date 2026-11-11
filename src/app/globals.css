@@ -1,0 +1,588 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Identidade visual — Santuário Santa Teresinha
+   Marfim · Vinho profundo · Dourado envelhecido · Rosa suave · Verde
+------------------------------------------------------------------- */
+@theme {
+  --color-ivory: #f8f3e9;
+  --color-ivory-deep: #f0e7d6;
+  --color-parchment: #e9dcc3;
+  --color-wine: #651e27;
+  --color-wine-deep: #47121a;
+  --color-gold: #b39456;
+  --color-gold-deep: #7a5f2c; /* dourado para texto (contraste AA sobre marfim) */
+  --color-gold-soft: #d9c79d;
+  --color-rose: #e8b7b4;
+  --color-rose-deep: #c98580;
+  --color-rose-pale: #f6dfdc;
+  --color-leaf: #66765a;
+  --color-ink: #3a2a27;
+  --color-ink-soft: #655249;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Iowan Old Style",
+    "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --shadow-card: 0 1px 2px rgb(101 30 39 / 0.04),
+    0 12px 32px -12px rgb(101 30 39 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(101 30 39 / 0.06),
+    0 24px 48px -16px rgb(101 30 39 / 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-variant-numeric: lining-nums;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-rose);
+    color: var(--color-wine-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-wine);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-gold-soft);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Largura de leitura e respiro lateral padrão das seções */
+  .shell {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .section {
+    position: relative;
+    padding-block: clamp(4.5rem, 10vw, 8.5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  /* Botões ------------------------------------------------------- */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-align: center;
+    transition:
+      transform 0.35s var(--ease-soft),
+      box-shadow 0.35s var(--ease-soft),
+      background-color 0.35s var(--ease-soft),
+      color 0.35s var(--ease-soft),
+      border-color 0.35s var(--ease-soft);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  .btn-primary {
+    background-color: var(--color-wine);
+    color: var(--color-ivory);
+    box-shadow:
+      inset 0 0 0 1px rgb(217 199 157 / 0.35),
+      0 10px 24px -12px rgb(101 30 39 / 0.7);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-wine-deep);
+    box-shadow:
+      inset 0 0 0 1px rgb(217 199 157 / 0.6),
+      0 16px 30px -12px rgb(101 30 39 / 0.75);
+  }
+
+  .btn-outline {
+    color: var(--color-wine);
+    border: 1px solid rgb(101 30 39 / 0.45);
+    background-color: rgb(255 255 255 / 0.35);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--color-wine);
+    background-color: rgb(255 255 255 / 0.8);
+  }
+
+  .btn-light {
+    background-color: var(--color-ivory);
+    color: var(--color-wine);
+    box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.6);
+  }
+
+  .btn-light:hover {
+    background-color: #fff;
+  }
+
+  .btn-ghost-light {
+    color: var(--color-ivory);
+    border: 1px solid rgb(217 199 157 / 0.55);
+  }
+
+  .btn-ghost-light:hover {
+    border-color: var(--color-gold-soft);
+    background-color: rgb(255 255 255 / 0.08);
+  }
+
+  /* Link de navegação com sublinhado dourado que se desenha */
+  .nav-link {
+    position: relative;
+    padding-block: 0.5rem;
+    transition: color 0.3s var(--ease-soft);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.15rem;
+    height: 1px;
+    background-color: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-soft);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Textura sutil de papel sobre fundos marfim */
+  .paper {
+    background-image:
+      radial-gradient(
+        120% 80% at 50% 0%,
+        rgb(255 255 255 / 0.7),
+        transparent 60%
+      ),
+      linear-gradient(180deg, var(--color-ivory), var(--color-ivory-deep));
+  }
+}
+
+/* ------------------------------------------------------------------
+   Revelação ao rolar — elementos com [data-reveal]
+   Só ficam ocultos quando o JS confirma que irá revelá-los (html.reveal-ready),
+   garantindo conteúdo visível sem JavaScript.
+------------------------------------------------------------------- */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0);
+  transition:
+    opacity 0.9s var(--ease-soft),
+    transform 0.9s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.reveal-ready [data-reveal="fade"] {
+  transform: none;
+}
+
+html.reveal-ready [data-reveal="left"] {
+  transform: translate3d(-1.75rem, 0, 0);
+}
+
+html.reveal-ready [data-reveal="right"] {
+  transform: translate3d(1.75rem, 0, 0);
+}
+
+html.reveal-ready [data-reveal="scale"] {
+  transform: scale(0.96);
+}
+
+html.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------
+   Abertura (website reveal)
+------------------------------------------------------------------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  animation: intro-dismiss 0s linear 3.1s forwards;
+}
+
+/* Visitante que já viu a abertura nesta sessão (definido antes da pintura) */
+html[data-intro="seen"] .intro {
+  display: none;
+}
+
+.intro-curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background: var(--color-ivory);
+  will-change: transform;
+}
+
+.intro-curtain--left {
+  left: 0;
+  animation: curtain-left 0.95s cubic-bezier(0.76, 0, 0.24, 1) 2.1s forwards;
+}
+
+.intro-curtain--right {
+  right: 0;
+  animation: curtain-right 0.95s cubic-bezier(0.76, 0, 0.24, 1) 2.1s forwards;
+}
+
+.intro-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  animation: intro-content-out 0.45s var(--ease-soft) 1.85s forwards;
+}
+
+.intro-rose {
+  opacity: 0;
+  transform: scale(0.6) rotate(-18deg);
+  animation: intro-rose-in 1s var(--ease-soft) 0.1s forwards;
+}
+
+.intro-name {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  letter-spacing: 0.02em;
+  animation: intro-rise 0.8s var(--ease-soft) 0.55s forwards;
+}
+
+.intro-rule {
+  transform: scaleX(0);
+  animation: intro-rule 0.8s var(--ease-soft) 0.8s forwards;
+}
+
+.intro-phrase {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  animation: intro-rise 0.8s var(--ease-soft) 1s forwards;
+}
+
+/* Encerramento antecipado (usuário interagiu) */
+.intro.is-skipping {
+  animation: intro-fade 0.35s var(--ease-soft) forwards;
+}
+
+.intro.is-skipping * {
+  animation-play-state: paused;
+}
+
+@keyframes intro-rose-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes intro-content-out {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes curtain-left {
+  to {
+    transform: translate3d(-101%, 0, 0);
+  }
+}
+
+@keyframes curtain-right {
+  to {
+    transform: translate3d(101%, 0, 0);
+  }
+}
+
+@keyframes intro-dismiss {
+  to {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Em telas pequenas a abertura é simplificada: um único fade, sem cortinas */
+@media (max-width: 767px) {
+  .intro {
+    background: var(--color-ivory);
+    animation:
+      intro-fade 0.5s var(--ease-soft) 2s forwards,
+      intro-dismiss 0s linear 2.5s forwards;
+  }
+
+  .intro-curtain {
+    display: none;
+  }
+
+  .intro-content {
+    animation: none;
+  }
+}
+
+/* O hero entra em cena quando a cortina se abre */
+.hero-enter {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+  animation: intro-rise 1.1s var(--ease-soft) forwards;
+  animation-delay: calc(var(--hero-base, 2.2s) + var(--hero-step, 0s));
+}
+
+html[data-intro="seen"] .hero-enter {
+  --hero-base: 0.1s;
+}
+
+@media (max-width: 767px) {
+  .hero-enter {
+    --hero-base: 1.9s;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Pétalas de rosa
+------------------------------------------------------------------- */
+.petals {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.petal {
+  position: absolute;
+  top: -6vh;
+  left: var(--x);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: petal-fall var(--dur) linear var(--delay) infinite;
+}
+
+/* Algumas pétalas se desfazem antes do fim da tela */
+.petal--fading {
+  animation-name: petal-fall-fading;
+}
+
+.petal-sway {
+  display: block;
+  animation: petal-sway var(--sway-dur) ease-in-out var(--delay) infinite
+    alternate;
+}
+
+.petal-shape {
+  display: block;
+  width: var(--size);
+  height: calc(var(--size) * 1.18);
+  border-radius: 62% 38% 58% 42% / 78% 72% 28% 22%;
+  background: radial-gradient(
+    120% 100% at 30% 20%,
+    var(--tone-light),
+    var(--tone) 55%,
+    var(--tone-dark) 100%
+  );
+  box-shadow: inset -1px -2px 3px rgb(101 30 39 / 0.12);
+  filter: blur(var(--blur, 0));
+  animation: petal-spin var(--spin-dur) linear var(--delay) infinite;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--alpha);
+  }
+  85% {
+    opacity: var(--alpha);
+  }
+  100% {
+    transform: translate3d(var(--drift), 112vh, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes petal-fall-fading {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--alpha);
+  }
+  45% {
+    opacity: var(--alpha);
+  }
+  68%,
+  100% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(var(--drift), 112vh, 0);
+  }
+}
+
+@keyframes petal-sway {
+  from {
+    transform: translate3d(calc(var(--sway) * -1), 0, 0);
+  }
+  to {
+    transform: translate3d(var(--sway), 0, 0);
+  }
+}
+
+@keyframes petal-spin {
+  from {
+    transform: rotate3d(var(--ax), var(--ay), 0.6, var(--rot));
+  }
+  to {
+    transform: rotate3d(var(--ax), var(--ay), 0.6, calc(var(--rot) + 360deg));
+  }
+}
+
+/* ------------------------------------------------------------------
+   Movimentos decorativos
+------------------------------------------------------------------- */
+@keyframes halo-breathe {
+  from {
+    opacity: 0.75;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+.halo {
+  animation: halo-breathe 7s ease-in-out infinite alternate;
+}
+
+/* Parallax muito sutil, apenas onde há suporte a scroll-driven animations */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+    .parallax-soft {
+      animation: parallax-soft linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    @keyframes parallax-soft {
+      from {
+        transform: translate3d(0, 2.25rem, 0);
+      }
+      to {
+        transform: translate3d(0, -2.25rem, 0);
+      }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Acessibilidade — prefers-reduced-motion
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .intro,
+  .petals {
+    display: none !important;
+  }
+
+  .hero-enter,
+  html.reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
