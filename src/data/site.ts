@@ -9,7 +9,7 @@ export const site = {
   fullName: "Santuário do Amor Misericordioso de Deus",
   city: "Taboão da Serra",
   state: "SP",
-  tagline: "Um lugar de encontro com o amor misericordioso de Deus.",
+  tagline: "A vida com Jesus é mais feliz!",
   description:
     "Santuário Santa Teresinha — Santuário do Amor Misericordioso de Deus, em Taboão da Serra/SP. Confira os horários das Santas Missas, como chegar e os contatos.",
 
@@ -67,7 +67,6 @@ export type MassDay = {
 
 export const massSchedule = {
   title: "Horários das Santas Missas",
-  updateNote: "Novos horários a partir de 1º de maio de 2026",
   days: [
     {
       id: "domingo",

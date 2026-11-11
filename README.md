@@ -65,7 +65,7 @@ Tudo em `src/data/site.ts`:
 
 ## Comportamento das animações
 
-- **Abertura:** ~4 s (o nome fica 1,5 s em cena), uma vez por sessão (`sessionStorage`). Sobre o vinho, uma rajada de pétalas atravessa a tela enquanto o nome é revelado; a cena se dissolve no hero. Qualquer clique, tecla ou rolagem a encerra; no celular usa metade das pétalas.
+- **Abertura:** ~5 s (as pétalas passam à frente do nome e saem, deixando-o sozinho por um instante), uma vez por sessão (`sessionStorage`). Sobre o vinho, uma rajada de pétalas atravessa a tela enquanto o nome é revelado; a cena se dissolve no hero. Qualquer clique, tecla ou rolagem a encerra; no celular usa metade das pétalas.
 - **Pétalas ambientes:** depois da abertura, poucas pétalas nas laterais (10 no desktop, 7 em tablets, 4 no celular), 100% CSS; reduzidas ou desativadas em aparelhos modestos e com economia de dados.
 - **`prefers-reduced-motion`:** abertura, pétalas e revelações são desativadas.
 

@@ -27,19 +27,11 @@ export function Hero() {
 
           <h1
             id="hero-titulo"
-            className="hero-enter mt-6 text-[2.7rem] leading-[1.02] tracking-[-0.01em] sm:text-6xl lg:text-[4.6rem] xl:text-[5.4rem]"
+            className="hero-enter mt-6 text-[3.1rem] leading-[1] tracking-[-0.01em] sm:text-7xl lg:text-[5.4rem] xl:text-[6.5rem]"
             style={step(0.12)}
           >
-            Um lugar de encontro com o{" "}
-            <em className="text-gold-soft">amor misericordioso</em> de Deus.
+            A vida com Jesus é <em className="text-gold-soft">mais feliz!</em>
           </h1>
-
-          <p
-            className="hero-enter mt-6 text-[0.8rem] tracking-[0.22em] text-ivory/75 uppercase"
-            style={step(0.24)}
-          >
-            {site.city} — {site.state}
-          </p>
         </div>
 
         {/* Santa Teresinha — a imagem é a protagonista */}

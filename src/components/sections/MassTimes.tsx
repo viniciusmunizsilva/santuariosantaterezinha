@@ -15,9 +15,6 @@ export function MassTimes() {
           <h2 id="missas-titulo" className="h-section mt-5 text-wine">
             Horários das <em>Santas Missas</em>
           </h2>
-          <p className="mt-7 border-l border-gold pl-4 text-[0.95rem] leading-relaxed text-ink-soft">
-            {massSchedule.updateNote}.
-          </p>
           <Botanical
             sizes="300px"
             className="mt-10 hidden h-auto w-[17rem] -rotate-6 lg:-ml-10 lg:block"

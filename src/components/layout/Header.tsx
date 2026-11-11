@@ -82,10 +82,10 @@ export function Header() {
         <a
           href="#inicio"
           className="flex items-center"
-          aria-label={`${site.name} — início`}
+          aria-label={`${site.name}, ${site.city} — ${site.state} — início`}
           onClick={() => setOpen(false)}
         >
-          <span className="font-serif text-[1.3rem] leading-[1.05] font-semibold tracking-wide">
+          <span className="font-serif text-[1.15rem] leading-[1.05] font-semibold tracking-wide whitespace-nowrap sm:text-[1.3rem]">
             <span
               className={`block font-sans text-[0.62rem] font-semibold tracking-[0.3em] uppercase transition-colors duration-500 ${
                 light ? "text-gold-deep" : "text-gold-soft"
@@ -95,10 +95,21 @@ export function Header() {
             </span>
             Santa Teresinha
           </span>
+          <span
+            className={`ml-3 border-l pl-3 text-[0.56rem] leading-[1.5] font-semibold tracking-[0.12em] whitespace-nowrap uppercase transition-colors duration-500 sm:ml-4 sm:pl-4 sm:text-[0.65rem] sm:tracking-[0.2em] ${
+              light
+                ? "border-gold/60 text-ink-soft"
+                : "border-gold-soft/40 text-ivory/80"
+            }`}
+          >
+            {site.city}
+            <span aria-hidden="true" className="max-sm:hidden"> — </span>
+            <span className="max-sm:block">{site.state}</span>
+          </span>
         </a>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-[0.9rem] font-medium">
+          <ul className="flex items-center gap-5 text-[0.88rem] font-medium xl:gap-8">
             {navigation.map((item) => (
               <li key={item.href}>
                 <a href={item.href} className="link">
@@ -114,7 +125,7 @@ export function Header() {
             href={site.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex ${
+            className={`btn hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex lg:hidden xl:inline-flex ${
               light ? "btn-wine" : "btn-line-light"
             }`}
           >
