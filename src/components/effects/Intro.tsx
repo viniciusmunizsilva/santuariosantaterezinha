@@ -21,7 +21,7 @@ const noise = (index: number, salt: number) => {
 };
 
 /** A rajada de pétalas: três planos de profundidade, tamanhos e ritmos distintos. */
-const GUST = Array.from({ length: 54 }, (_, i) => {
+const GUST = Array.from({ length: 84 }, (_, i) => {
   const depth = noise(i, 1); // 0 = ao fundo · 1 = em primeiro plano
   const size = 12 + depth * depth * 46;
   return {
@@ -30,7 +30,7 @@ const GUST = Array.from({ length: 54 }, (_, i) => {
       "--y": `${(noise(i, 2) * 96 - 12).toFixed(1)}vh`,
       "--size": `${size.toFixed(0)}px`,
       "--dur": `${(2.5 - depth * 0.9 + noise(i, 3) * 0.5).toFixed(2)}s`,
-      "--delay": `${(noise(i, 4) * 1.15).toFixed(2)}s`,
+      "--delay": `${(noise(i, 4) * 2.9).toFixed(2)}s`,
       "--fall": `${(14 + noise(i, 5) * 34).toFixed(0)}vh`,
       "--arc": `${(noise(i, 6) * 16 - 8).toFixed(0)}vh`,
       "--spin": `${(2.2 + noise(i, 7) * 3).toFixed(1)}s`,
@@ -46,7 +46,7 @@ const GUST = Array.from({ length: 54 }, (_, i) => {
 /**
  * Abertura: sobre o vinho, uma rajada de pétalas atravessa a tela enquanto o
  * nome do Santuário se revela; em seguida a cena se dissolve no hero, que tem
- * o mesmo fundo — a página "surge" sem corte. Sequência 100% CSS (≈3s);
+ * o mesmo fundo — a página "surge" sem corte. Sequência 100% CSS (≈4s; o nome fica 1,5s em cena);
  * qualquer interação a encerra na hora. Não bloqueia o conteúdo.
  */
 export function Intro() {
