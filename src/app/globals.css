@@ -400,12 +400,6 @@ html[data-intro="seen"] .intro {
   animation: intro-out 0.4s var(--ease-soft) 2.05s forwards;
 }
 
-.intro-mark {
-  opacity: 0;
-  transform: translateY(0.6rem);
-  animation: rise 0.8s var(--ease-soft) 0.45s forwards;
-}
-
 .intro-kicker {
   opacity: 0;
   letter-spacing: 0.7em;

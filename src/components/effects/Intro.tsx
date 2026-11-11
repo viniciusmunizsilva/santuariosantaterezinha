@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Mark } from "@/components/ornaments/Mark";
 
 /** Chave de sessão: a abertura é exibida uma única vez por visita. */
 export const INTRO_STORAGE_KEY = "sst:intro";
@@ -104,8 +103,7 @@ export function Intro() {
         ))}
       </div>
       <div className="intro-content">
-        <Mark className="intro-mark h-14 w-11 text-gold-soft" />
-        <p className="intro-kicker mt-6 pl-[0.42em] text-[0.72rem] font-semibold text-gold-soft uppercase">
+        <p className="intro-kicker pl-[0.42em] text-[0.72rem] font-semibold text-gold-soft uppercase">
           Santuário
         </p>
         <p className="intro-name mt-3 font-serif text-[3.1rem] leading-none font-medium sm:text-8xl">

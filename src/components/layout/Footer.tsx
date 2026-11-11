@@ -1,4 +1,3 @@
-import { Mark } from "@/components/ornaments/Mark";
 import { navigation, site } from "@/data/site";
 
 export function Footer() {
@@ -7,8 +6,7 @@ export function Footer() {
       <div className="shell py-14 lg:py-16">
         <div className="grid gap-10 md:grid-cols-[minmax(0,5fr)_auto_auto] md:gap-14 lg:gap-24">
           <div>
-            <Mark className="h-12 w-9 text-gold-soft" />
-            <p className="mt-5 font-serif text-[2rem] leading-tight text-ivory">
+            <p className="font-serif text-[2rem] leading-tight text-ivory">
               {site.name}
             </p>
             <p className="mt-1 font-serif text-lg text-gold-soft italic">

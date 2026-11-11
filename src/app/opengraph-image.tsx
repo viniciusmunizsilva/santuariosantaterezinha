@@ -31,21 +31,7 @@ export default function OpenGraphImage() {
             display: "flex",
           }}
         />
-        <svg
-          width="84"
-          height="110"
-          viewBox="0 0 40 52"
-          fill="none"
-          stroke="#dcc89a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        >
-          <path d="M20 2v15M14.5 7.5h11" />
-          <path d="M27 24.6A13.5 13.5 0 1 0 33.5 36" />
-          <path d="M20 28a8 8 0 1 0 8 8c0-3-2.2-5.2-5-5.2" />
-          <path d="M20 33a3 3 0 1 0 3 3" />
-        </svg>
-        <div style={{ fontSize: 78, marginTop: 30, letterSpacing: 1 }}>
+        <div style={{ fontSize: 78, letterSpacing: 1 }}>
           {site.name}
         </div>
         <div

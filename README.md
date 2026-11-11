@@ -36,7 +36,7 @@ src/
     layout/             Header (client), Footer
     sections/           Hero, MassTimes, OpeningHours, Location, Contact, Teresinha
     effects/            Intro, Petals, ScrollReveal (client)
-    ornaments/          Mark (marca), Botanical (gravura de Redouté)
+    ornaments/          Botanical (gravura de Redouté)
     ui/                 ícones, WhatsAppFab
 public/images/          santa-teresinha-statue.png (imagem do hero)
 ```
@@ -79,5 +79,5 @@ Tudo em `src/data/site.ts`:
 
 - Horários de funcionamento (visitação e secretaria).
 - Endereço completo e CEP.
-- Logotipo oficial (a marca atual — cruz sobre a rosa — é provisória).
+- Logotipo oficial (hoje o site usa apenas o nome em tipografia; o favicon é uma cruz simples).
 - Domínio oficial (`NEXT_PUBLIC_SITE_URL`).

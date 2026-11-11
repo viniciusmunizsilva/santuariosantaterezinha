@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Mark } from "@/components/ornaments/Mark";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { navigation, site } from "@/data/site";
 
@@ -82,15 +81,10 @@ export function Header() {
       >
         <a
           href="#inicio"
-          className="flex items-center gap-3"
+          className="flex items-center"
           aria-label={`${site.name} — início`}
           onClick={() => setOpen(false)}
         >
-          <Mark
-            className={`h-10 w-8 transition-colors duration-500 ${
-              light ? "text-wine" : "text-gold-soft"
-            }`}
-          />
           <span className="font-serif text-[1.3rem] leading-[1.05] font-semibold tracking-wide">
             <span
               className={`block font-sans text-[0.62rem] font-semibold tracking-[0.3em] uppercase transition-colors duration-500 ${
