@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { ArrowIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { site } from "@/data/site";
 
 const step = (seconds: number) =>
@@ -41,33 +40,6 @@ export function Hero() {
           >
             {site.city} — {site.state}
           </p>
-
-          <div
-            className="hero-enter mt-9 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
-            style={step(0.34)}
-          >
-            <a href="#missas" className="btn btn-ivory group">
-              Horários das Missas
-              <ArrowIcon className="size-4 rotate-90 transition-transform duration-300 group-hover:translate-y-0.5" />
-            </a>
-            <a
-              href={site.whatsapp.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-line-light"
-            >
-              <WhatsAppIcon className="size-5" />
-              Fale conosco
-            </a>
-          </div>
-
-          <a
-            href="#como-chegar"
-            className="hero-enter link mt-6 inline-block text-sm text-ivory/80"
-            style={step(0.44)}
-          >
-            Como chegar
-          </a>
         </div>
 
         {/* Santa Teresinha — a imagem é a protagonista */}
