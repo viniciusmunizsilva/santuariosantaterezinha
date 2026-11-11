@@ -21,7 +21,7 @@ const noise = (index: number, salt: number) => {
 };
 
 /** A rajada de pétalas: três planos de profundidade, tamanhos e ritmos distintos. */
-const GUST = Array.from({ length: 28 }, (_, i) => {
+const GUST = Array.from({ length: 54 }, (_, i) => {
   const depth = noise(i, 1); // 0 = ao fundo · 1 = em primeiro plano
   const size = 12 + depth * depth * 46;
   return {
@@ -30,7 +30,7 @@ const GUST = Array.from({ length: 28 }, (_, i) => {
       "--y": `${(noise(i, 2) * 96 - 12).toFixed(1)}vh`,
       "--size": `${size.toFixed(0)}px`,
       "--dur": `${(2.5 - depth * 0.9 + noise(i, 3) * 0.5).toFixed(2)}s`,
-      "--delay": `${(noise(i, 4) * 0.9).toFixed(2)}s`,
+      "--delay": `${(noise(i, 4) * 1.15).toFixed(2)}s`,
       "--fall": `${(14 + noise(i, 5) * 34).toFixed(0)}vh`,
       "--arc": `${(noise(i, 6) * 16 - 8).toFixed(0)}vh`,
       "--spin": `${(2.2 + noise(i, 7) * 3).toFixed(1)}s`,
