@@ -1,8 +1,8 @@
-# Santuário Santa Teresinha
+# Santuário Santa Terezinha
 
-Landing page institucional do **Santuário Santa Teresinha — Santuário do Amor Misericordioso de Deus**, em Taboão da Serra/SP.
+Landing page institucional do **Santuário Santa Terezinha — Santuário do Amor Misericordioso de Deus**, em Taboão da Serra/SP.
 
-Identidade visual inspirada em Santa Teresinha do Menino Jesus, nas rosas e na espiritualidade do Carmelo.
+Identidade visual inspirada em Santa Terezinha do Menino Jesus, nas rosas e na espiritualidade do Carmelo.
 
 ## Stack
 
@@ -27,25 +27,25 @@ Em produção, defina `NEXT_PUBLIC_SITE_URL` com o domínio oficial (usado em ca
 
 ```
 src/
-  app/                  layout (fontes, SEO), página, estilos globais, ícone, OG image, robots, sitemap
+  app/                  layout (fontes, SEO), página, estilos globais, ícone, imagem de compartilhamento, robots, sitemap
   data/site.ts          ← horários, contatos, links, endereço e funcionamento (fonte única de conteúdo)
   data/seo.ts           URL do site e dados estruturados (schema.org)
   assets/               imagens importadas (gravura botânica, retrato histórico)
   fonts/                Cormorant Garamond e Inter (auto-hospedadas, licença OFL)
   components/
     layout/             Header (client), Footer
-    sections/           Hero, MassTimes, OpeningHours, Location, Contact, Teresinha
+    sections/           Hero, MassTimes, OpeningHours, Location, Contact, Terezinha
     effects/            Intro, Petals, ScrollReveal (client)
     ornaments/          Botanical (gravura de Redouté)
     ui/                 ícones, WhatsAppFab
-public/images/          santa-teresinha-statue.png (imagem do hero)
+public/images/          santa-terezinha-statue.png (imagem do hero)
 ```
 
 Apenas `Header`, `Intro`, `Petals` e `ScrollReveal` são Client Components; o restante é renderizado no servidor e a página é gerada estaticamente.
 
 ## Ordem da página
 
-1. Hero · 2. Horários das Santas Missas · 3. Horários de funcionamento · 4. Como chegar · 5. Contato e atendimento · 6. Santa Teresinha · 7. Rodapé
+1. Hero · 2. Horários das Santas Missas · 3. Horários de funcionamento · 4. Como chegar · 5. Contato e atendimento · 6. Santa Terezinha · 7. Rodapé
 
 A página responde primeiro a: quando são as missas, quando posso visitar e como entro em contato. A história da santa fica no final.
 
@@ -56,7 +56,7 @@ Tudo em `src/data/site.ts`:
 - **Horários das missas:** `massSchedule`.
 - **Horários de funcionamento:** `site.openingHours` — enquanto a lista estiver vazia, a seção mostra "Consulte os horários de funcionamento pelo WhatsApp". Ao preencher, os horários aparecem automaticamente.
 - **Endereço:** `address.street` e `address.postalCode`, quando confirmados.
-- **Imagem do hero:** substitua `public/images/santa-teresinha-statue.png` (PNG com fundo transparente, proporção próxima de 1134×1387).
+- **Imagem do hero:** substitua `public/images/santa-terezinha-statue.png` (PNG com fundo transparente, proporção próxima de 1134×1387).
 
 ## Fluxo de branches
 
@@ -69,9 +69,14 @@ Tudo em `src/data/site.ts`:
 - **Pétalas ambientes:** depois da abertura, poucas pétalas nas laterais (10 no desktop, 7 em tablets, 4 no celular), 100% CSS; reduzidas ou desativadas em aparelhos modestos e com economia de dados.
 - **`prefers-reduced-motion`:** abertura, pétalas e revelações são desativadas.
 
+## Imagens de compartilhamento
+
+- `src/app/opengraph-image.png` (1200×630): prévia que aparece ao enviar o link no WhatsApp e em redes sociais.
+- `public/share/santuario-instagram-feed.png` (1080×1350) e `public/share/santuario-instagram-story.png` (1080×1920): artes prontas para Instagram e status do WhatsApp.
+
 ## Créditos de imagem
 
-- Imagem de Santa Teresinha (hero): fornecida pela equipe do projeto.
+- Imagem de Santa Terezinha (hero): fornecida pela equipe do projeto.
 - Retrato histórico: fotografia do Carmelo de Lisieux, via Wikimedia Commons (`File:Teresa-de-Lisieux.jpg`).
 - Gravura botânica: *Rosa centifolia foliacea*, de Pierre-Joseph Redouté (*Les Roses*, c. 1820), via Wikimedia Commons (`File:Rosa centifolia foliacea 17.jpg`), domínio público.
 

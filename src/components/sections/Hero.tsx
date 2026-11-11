@@ -34,7 +34,7 @@ export function Hero() {
           </h1>
         </div>
 
-        {/* Santa Teresinha — a imagem é a protagonista */}
+        {/* Santa Terezinha — a imagem é a protagonista */}
         <div
           className="hero-enter relative mx-auto mt-8 h-[21rem] w-full max-w-[24rem] sm:h-[26rem] lg:mx-0 lg:mt-0 lg:h-auto lg:max-w-none lg:self-end"
           style={step(0.18)}
@@ -51,8 +51,8 @@ export function Hero() {
                 className="absolute top-[17%] left-[51%] aspect-square w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold-soft/60"
               />
               <Image
-                src="/images/santa-teresinha-statue.png"
-                alt="Imagem de Santa Teresinha do Menino Jesus segurando rosas e o crucifixo"
+                src="/images/santa-terezinha-statue.png"
+                alt="Imagem de Santa Terezinha do Menino Jesus segurando rosas e o crucifixo"
                 width={1134}
                 height={1387}
                 priority

@@ -93,7 +93,7 @@ export function Header() {
             >
               Santuário
             </span>
-            Santa Teresinha
+            Santa Terezinha
           </span>
           <span
             className={`ml-3 border-l pl-3 text-[0.56rem] leading-[1.5] font-semibold tracking-[0.12em] whitespace-nowrap uppercase transition-colors duration-500 sm:ml-4 sm:pl-4 sm:text-[0.65rem] sm:tracking-[0.2em] ${

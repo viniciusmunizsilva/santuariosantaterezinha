@@ -101,7 +101,7 @@ export function Intro() {
           Santuário
         </p>
         <p className="intro-name mt-3 font-serif text-[3.1rem] leading-none font-medium sm:text-8xl">
-          Santa <em className="text-gold-soft">Teresinha</em>
+          Santa <em className="text-gold-soft">Terezinha</em>
         </p>
         <span className="intro-rule mt-7 block h-px w-28 bg-gold" />
       </div>

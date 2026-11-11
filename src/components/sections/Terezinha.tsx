@@ -1,12 +1,12 @@
 import Image from "next/image";
-import portrait from "@/assets/santa-teresinha-retrato.jpg";
+import portrait from "@/assets/santa-terezinha-retrato.jpg";
 import { Botanical } from "@/components/ornaments/Botanical";
 
-export function Teresinha() {
+export function Terezinha() {
   return (
     <section
-      id="santa-teresinha"
-      aria-labelledby="teresinha-titulo"
+      id="santa-terezinha"
+      aria-labelledby="terezinha-titulo"
       className="relative overflow-clip py-24 sm:py-32 lg:py-40"
     >
       <div className="shell grid items-center gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-24">
@@ -15,7 +15,7 @@ export function Teresinha() {
           <div className="relative aspect-[3/4] overflow-hidden rounded-t-full bg-wine-night outline outline-1 outline-offset-[7px] outline-gold/60">
             <Image
               src={portrait}
-              alt="Fotografia histórica de Santa Teresinha do Menino Jesus com o hábito carmelita"
+              alt="Fotografia histórica de Santa Terezinha do Menino Jesus com o hábito carmelita"
               fill
               sizes="(min-width: 1024px) 23rem, 19rem"
               placeholder="blur"
@@ -36,8 +36,8 @@ export function Teresinha() {
         </figure>
 
         <div data-reveal>
-          <p className="eyebrow">Santa Teresinha do Menino Jesus</p>
-          <h2 id="teresinha-titulo" className="h-section mt-5 text-wine">
+          <p className="eyebrow">Santa Terezinha do Menino Jesus</p>
+          <h2 id="terezinha-titulo" className="h-section mt-5 text-wine">
             Uma vida que floresceu em <em>amor.</em>
           </h2>
 
@@ -63,7 +63,7 @@ export function Teresinha() {
             <blockquote className="font-serif text-[1.9rem] leading-[1.15] text-wine italic sm:text-[2.4rem]">
               “Vou passar o meu céu fazendo o bem sobre a terra.”
             </blockquote>
-            <figcaption className="eyebrow mt-4">Santa Teresinha</figcaption>
+            <figcaption className="eyebrow mt-4">Santa Terezinha</figcaption>
           </figure>
         </div>
       </div>

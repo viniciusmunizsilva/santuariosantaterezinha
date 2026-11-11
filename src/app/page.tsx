@@ -8,7 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Location } from "@/components/sections/Location";
 import { MassTimes } from "@/components/sections/MassTimes";
 import { OpeningHours } from "@/components/sections/OpeningHours";
-import { Teresinha } from "@/components/sections/Teresinha";
+import { Terezinha } from "@/components/sections/Terezinha";
 import { WhatsAppFab } from "@/components/ui/WhatsAppFab";
 
 export default function HomePage() {
@@ -34,7 +34,7 @@ export default function HomePage() {
         <OpeningHours />
         <Location />
         <Contact />
-        <Teresinha />
+        <Terezinha />
       </main>
 
       <Footer />

@@ -5,13 +5,13 @@
  */
 
 export const site = {
-  name: "Santuário Santa Teresinha",
+  name: "Santuário Santa Terezinha",
   fullName: "Santuário do Amor Misericordioso de Deus",
   city: "Taboão da Serra",
   state: "SP",
   tagline: "A vida com Jesus é mais feliz!",
   description:
-    "Santuário Santa Teresinha — Santuário do Amor Misericordioso de Deus, em Taboão da Serra/SP. Confira os horários das Santas Missas, como chegar e os contatos.",
+    "Santuário Santa Terezinha — Santuário do Amor Misericordioso de Deus, em Taboão da Serra/SP. Confira os horários das Santas Missas, como chegar e os contatos.",
 
   /**
    * Endereço completo: PENDENTE de confirmação pela administração.
@@ -56,7 +56,7 @@ export const navigation = [
   { label: "Funcionamento", href: "#funcionamento" },
   { label: "Como chegar", href: "#como-chegar" },
   { label: "Contato", href: "#contato" },
-  { label: "Santa Teresinha", href: "#santa-teresinha" },
+  { label: "Santa Terezinha", href: "#santa-terezinha" },
 ] as const;
 
 export type MassDay = {

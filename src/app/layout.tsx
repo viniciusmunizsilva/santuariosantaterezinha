@@ -43,12 +43,12 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   keywords: [
-    "Santuário Santa Teresinha",
     "Santuário Santa Terezinha",
+    "Santuário Santa Teresinha", // grafia alternativa, só para buscas
     "Santuário do Amor Misericordioso de Deus",
     "Taboão da Serra",
     "horários de missa",
-    "Santa Teresinha do Menino Jesus",
+    "Santa Terezinha do Menino Jesus",
     "igreja católica",
   ],
   alternates: { canonical: "/" },

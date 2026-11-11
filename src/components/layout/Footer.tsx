@@ -73,7 +73,7 @@ export function Footer() {
             © {new Date().getFullYear()} {site.name}
           </p>
           <p className="font-serif text-base text-gold-soft italic">
-            Santa Teresinha do Menino Jesus, rogai por nós.
+            Santa Terezinha do Menino Jesus, rogai por nós.
           </p>
         </div>
       </div>
