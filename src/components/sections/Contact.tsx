@@ -10,10 +10,13 @@ export function Contact() {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(55%_90%_at_100%_100%,rgb(44_11_17/0.9),transparent_70%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(70%_90%_at_50%_120%,rgb(44_11_17/0.9),transparent_70%)]"
       />
 
-      <div data-reveal className="shell py-20 sm:py-28 lg:py-32">
+      <div
+        data-reveal
+        className="shell flex flex-col items-center py-20 text-center sm:py-28 lg:py-32"
+      >
         <p className="eyebrow">Contato e atendimento</p>
         <h2
           id="contato-titulo"
@@ -26,38 +29,29 @@ export function Contact() {
           conosco pelo WhatsApp.
         </p>
 
-        <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
-          <a
-            href={site.whatsapp.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-ivory !min-h-[4.25rem] !gap-4 !px-8 !text-left"
-          >
-            <WhatsAppIcon className="size-8 shrink-0" />
-            <span>
-              <span className="block text-xs font-semibold tracking-[0.18em] uppercase opacity-70">
-                Conversar no WhatsApp
-              </span>
-              <span className="block font-serif text-[1.7rem] leading-tight font-semibold">
-                {site.whatsapp.label}
-              </span>
-            </span>
-          </a>
+        <a
+          href={site.whatsapp.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-ivory mt-10 !min-h-[3.75rem] w-full max-w-sm !px-8 !text-base !font-semibold sm:w-auto"
+        >
+          <WhatsAppIcon className="size-6 shrink-0" />
+          Conversar no WhatsApp
+        </a>
 
-          <a
-            href={site.phone.href}
-            className="group inline-flex min-h-12 items-center gap-3 text-ivory/85"
-          >
-            <PhoneIcon className="size-5 text-gold-soft" />
-            <span>
-              <span className="sr-only">Telefone: </span>
-              <span aria-hidden="true">ou ligue </span>
-              <span className="link font-serif text-2xl font-semibold text-ivory">
-                {site.phone.label}
-              </span>
+        <a
+          href={site.phone.href}
+          className="mt-6 inline-flex min-h-12 items-center justify-center gap-3 text-ivory/85"
+        >
+          <PhoneIcon className="size-5 shrink-0 text-gold-soft" />
+          <span>
+            <span className="sr-only">Telefone: </span>
+            <span aria-hidden="true">ou ligue </span>
+            <span className="link font-serif text-2xl font-semibold text-ivory">
+              {site.phone.label}
             </span>
-          </a>
-        </div>
+          </span>
+        </a>
       </div>
     </section>
   );
