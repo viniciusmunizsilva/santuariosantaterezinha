@@ -3,12 +3,13 @@ import { Petals } from "@/components/effects/Petals";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { Location } from "@/components/sections/Location";
 import { MassTimes } from "@/components/sections/MassTimes";
+import { OpeningHours } from "@/components/sections/OpeningHours";
 import { Teresinha } from "@/components/sections/Teresinha";
+import { WhatsAppFab } from "@/components/ui/WhatsAppFab";
 
 export default function HomePage() {
   return (
@@ -29,14 +30,15 @@ export default function HomePage() {
 
       <main id="conteudo">
         <Hero />
-        <About />
-        <Teresinha />
         <MassTimes />
+        <OpeningHours />
         <Location />
         <Contact />
+        <Teresinha />
       </main>
 
       <Footer />
+      <WhatsAppFab />
     </>
   );
 }

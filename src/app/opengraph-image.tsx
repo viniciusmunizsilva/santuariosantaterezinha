@@ -5,14 +5,6 @@ export const alt = `${site.name} — ${site.fullName}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const PETAL = "M0 5C-23-1-27-34 0-45C27-34 23-1 0 5Z";
-const layers = [
-  { n: 5, s: 1, r: 0, fill: "#f1cbc8" },
-  { n: 5, s: 0.76, r: 36, fill: "#e8b7b4" },
-  { n: 5, s: 0.53, r: 12, fill: "#dc9f9b" },
-  { n: 3, s: 0.32, r: 40, fill: "#cc8782" },
-];
-
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
@@ -25,7 +17,7 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(180deg, #651e27, #47121a)",
+          background: "linear-gradient(180deg, #47121a, #2c0b11)",
           color: "#f8f3e9",
           fontFamily: "serif",
         }}
@@ -39,19 +31,19 @@ export default function OpenGraphImage() {
             display: "flex",
           }}
         />
-        <svg width="150" height="150" viewBox="-50 -50 100 100">
-          {layers.flatMap((layer, li) =>
-            Array.from({ length: layer.n }, (_, i) => (
-              <path
-                key={`${li}-${i}`}
-                d={PETAL}
-                transform={`rotate(${layer.r + (360 / layer.n) * i}) scale(${layer.s})`}
-                fill={layer.fill}
-                stroke="#b96f6b"
-                strokeWidth={0.8 / layer.s}
-              />
-            )),
-          )}
+        <svg
+          width="84"
+          height="110"
+          viewBox="0 0 40 52"
+          fill="none"
+          stroke="#dcc89a"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        >
+          <path d="M20 2v15M14.5 7.5h11" />
+          <path d="M27 24.6A13.5 13.5 0 1 0 33.5 36" />
+          <path d="M20 28a8 8 0 1 0 8 8c0-3-2.2-5.2-5-5.2" />
+          <path d="M20 33a3 3 0 1 0 3 3" />
         </svg>
         <div style={{ fontSize: 78, marginTop: 30, letterSpacing: 1 }}>
           {site.name}

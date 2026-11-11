@@ -28,42 +28,56 @@ Em produção, defina `NEXT_PUBLIC_SITE_URL` com o domínio oficial (usado em ca
 ```
 src/
   app/                  layout (fontes, SEO), página, estilos globais, ícone, OG image, robots, sitemap
-  data/site.ts          ← horários, contatos, links e endereço (fonte única de conteúdo)
+  data/site.ts          ← horários, contatos, links, endereço e funcionamento (fonte única de conteúdo)
   data/seo.ts           URL do site e dados estruturados (schema.org)
-  assets/               imagens otimizadas por next/image
+  assets/               imagens importadas (gravura botânica, retrato histórico)
   fonts/                Cormorant Garamond e Inter (auto-hospedadas, licença OFL)
   components/
     layout/             Header (client), Footer
-    sections/           Hero, About, Teresinha, MassTimes, Location, Contact
+    sections/           Hero, MassTimes, OpeningHours, Location, Contact, Teresinha
     effects/            Intro, Petals, ScrollReveal (client)
-    ornaments/          Rose, RoseSpray, Leaf, Divider, Emblem, SanctuaryIllustration
-    ui/                 SectionHeading, ícones
+    ornaments/          Mark (marca), Botanical (gravura de Redouté)
+    ui/                 ícones, WhatsAppFab
+public/images/          santa-teresinha-statue.png (imagem do hero)
 ```
 
-Apenas `Header`, `Intro`, `Petals` e `ScrollReveal` são Client Components; todo o restante é renderizado no servidor e a página é gerada estaticamente.
+Apenas `Header`, `Intro`, `Petals` e `ScrollReveal` são Client Components; o restante é renderizado no servidor e a página é gerada estaticamente.
+
+## Ordem da página
+
+1. Hero · 2. Horários das Santas Missas · 3. Horários de funcionamento · 4. Como chegar · 5. Contato e atendimento · 6. Santa Teresinha · 7. Rodapé
+
+A página responde primeiro a: quando são as missas, quando posso visitar e como entro em contato. A história da santa fica no final.
 
 ## Como atualizar o conteúdo
 
-- **Horários das missas, telefone, WhatsApp, endereço:** `src/data/site.ts`.
-- **Endereço:** preencha `address.street` e `address.postalCode` quando confirmados — a seção de localização e os dados estruturados passam a exibi-los.
-- **Fotografia do Santuário:** a seção "O Santuário" usa uma ilustração em traço (`SanctuaryIllustration`). Para usar a foto oficial, adicione-a em `src/assets/` e troque a ilustração por um `<Image>` em `src/components/sections/About.tsx`.
+Tudo em `src/data/site.ts`:
+
+- **Horários das missas:** `massSchedule`.
+- **Horários de funcionamento:** `site.openingHours` — enquanto a lista estiver vazia, a seção mostra "Consulte os horários de funcionamento pelo WhatsApp". Ao preencher, os horários aparecem automaticamente.
+- **Endereço:** `address.street` e `address.postalCode`, quando confirmados.
+- **Imagem do hero:** substitua `public/images/santa-teresinha-statue.png` (PNG com fundo transparente, proporção próxima de 1134×1387).
+
+## Fluxo de branches
+
+- `dev`: desenvolvimento — cada push gera um Preview na Vercel.
+- `main`: produção — recebe merge da `dev` quando estiver aprovado.
 
 ## Comportamento das animações
 
-- **Abertura (reveal):** ~3 s, uma vez por sessão (`sessionStorage`); qualquer clique, tecla ou rolagem a encerra; simplificada no mobile.
-- **Pétalas:** geradas uma única vez no cliente após a página ficar ociosa; movimento 100% CSS (transform/opacity). 16 no desktop, 10 em tablets, 5 no mobile; reduzidas ou desativadas em aparelhos modestos e com economia de dados.
-- **`prefers-reduced-motion`:** abertura, pétalas, parallax e revelações são desativados.
+- **Abertura:** ~3 s, uma vez por sessão (`sessionStorage`). Sobre o vinho, uma rajada de pétalas atravessa a tela enquanto o nome é revelado; a cena se dissolve no hero. Qualquer clique, tecla ou rolagem a encerra; no celular usa metade das pétalas.
+- **Pétalas ambientes:** depois da abertura, poucas pétalas nas laterais (10 no desktop, 7 em tablets, 4 no celular), 100% CSS; reduzidas ou desativadas em aparelhos modestos e com economia de dados.
+- **`prefers-reduced-motion`:** abertura, pétalas e revelações são desativadas.
 
 ## Créditos de imagem
 
-- Retrato de Santa Teresinha: fotografia histórica do Carmelo de Lisieux, via Wikimedia Commons (`File:Teresa-de-Lisieux.jpg`), em domínio público.
-- Rosas, ornamentos e a ilustração do Santuário: desenhos vetoriais criados para este projeto.
+- Imagem de Santa Teresinha (hero): fornecida pela equipe do projeto.
+- Retrato histórico: fotografia do Carmelo de Lisieux, via Wikimedia Commons (`File:Teresa-de-Lisieux.jpg`).
+- Gravura botânica: *Rosa centifolia foliacea*, de Pierre-Joseph Redouté (*Les Roses*, c. 1820), via Wikimedia Commons (`File:Rosa centifolia foliacea 17.jpg`), domínio público.
 
 ## Pendências (dependem da administração do Santuário)
 
-- Logotipo oficial (o emblema atual — cruz sobre a rosa — é provisório).
-- Fotografias oficiais do Santuário (fachada e interior).
-- Imagem de Santa Teresinha com as rosas e o crucifixo, de uso autorizado, em boa resolução (o hero usa hoje uma fotografia histórica de 565×720 px).
+- Horários de funcionamento (visitação e secretaria).
 - Endereço completo e CEP.
+- Logotipo oficial (a marca atual — cruz sobre a rosa — é provisória).
 - Domínio oficial (`NEXT_PUBLIC_SITE_URL`).
-- Confirmação da autoria/redação da frase-título da seção de Santa Teresinha.

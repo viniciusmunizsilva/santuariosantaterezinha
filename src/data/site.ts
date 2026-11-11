@@ -9,7 +9,7 @@ export const site = {
   fullName: "Santuário do Amor Misericordioso de Deus",
   city: "Taboão da Serra",
   state: "SP",
-  tagline: "Um lugar para encontrar o amor e a misericórdia de Deus.",
+  tagline: "Um lugar de encontro com o amor misericordioso de Deus.",
   description:
     "Santuário Santa Teresinha — Santuário do Amor Misericordioso de Deus, em Taboão da Serra/SP. Confira os horários das Santas Missas, como chegar e os contatos.",
 
@@ -34,6 +34,14 @@ export const site = {
     e164: "+5511947776209",
   },
 
+  /**
+   * Horários de funcionamento (visitação/secretaria) — NÃO são os horários das missas.
+   * PENDENTE de confirmação pela administração. Enquanto a lista estiver vazia,
+   * a seção exibe o convite para consultar pelo WhatsApp.
+   * Exemplo: { label: "Segunda a sexta-feira", hours: "8h às 18h" }
+   */
+  openingHours: [] as { label: string; hours: string }[],
+
   maps: {
     /** Busca pelo nome do local (sem coordenadas inventadas). */
     embed:
@@ -44,11 +52,11 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { label: "Início", href: "#inicio" },
-  { label: "O Santuário", href: "#santuario" },
-  { label: "Santa Teresinha", href: "#santa-teresinha" },
-  { label: "Horários das Missas", href: "#horarios" },
+  { label: "Missas", href: "#missas" },
+  { label: "Funcionamento", href: "#funcionamento" },
+  { label: "Como chegar", href: "#como-chegar" },
   { label: "Contato", href: "#contato" },
+  { label: "Santa Teresinha", href: "#santa-teresinha" },
 ] as const;
 
 export type MassDay = {

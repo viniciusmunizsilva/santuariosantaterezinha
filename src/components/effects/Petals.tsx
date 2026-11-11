@@ -5,32 +5,27 @@ import { useEffect, useState, type CSSProperties } from "react";
 type Petal = {
   id: number;
   fading: boolean;
+  shape: string;
   style: CSSProperties;
 };
 
-/** Rosa claro → rosa queimado: [luz, tom, sombra] */
-const TONES = [
-  ["#fbe6e3", "#f1cbc8", "#e3aaa6"],
-  ["#f6d6d3", "#e8b7b4", "#d79793"],
-  ["#f0c4c0", "#dc9f9b", "#c98580"],
-  ["#e9b3ae", "#cf8a85", "#b96f6b"],
-] as const;
+const SHAPES = ["petal-a", "petal-b", "petal-c"] as const;
 
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
 
 function createPetals(count: number, compact: boolean): Petal[] {
   return Array.from({ length: count }, (_, id) => {
-    // Distribuição nas bordas, alternando os lados, para não cobrir a leitura
-    const band = compact ? rand(0, 7) : rand(0, 13);
+    // Só nas laterais, alternando os lados, para nunca cobrir a leitura
+    const band = compact ? rand(0, 6) : rand(0, 11);
     const x = id % 2 === 0 ? band : 100 - band;
     const depth = Math.random(); // 0 = ao fundo (menor, difusa) · 1 = à frente
-    const size = compact ? rand(9, 15) : 10 + depth * 16;
-    const duration = rand(13, 22) - depth * 3;
-    const [light, tone, dark] = TONES[Math.floor(Math.random() * TONES.length)];
+    const size = compact ? rand(10, 16) : 11 + depth * 17;
+    const duration = rand(14, 24) - depth * 4;
 
     return {
       id,
       fading: Math.random() < 0.35,
+      shape: SHAPES[id % SHAPES.length],
       style: {
         "--x": `${x.toFixed(2)}%`,
         "--size": `${size.toFixed(1)}px`,
@@ -44,11 +39,8 @@ function createPetals(count: number, compact: boolean): Petal[] {
         "--rot": `${rand(0, 360).toFixed(0)}deg`,
         "--ax": rand(-1, 1).toFixed(2),
         "--ay": rand(-1, 1).toFixed(2),
-        "--alpha": (0.45 + depth * 0.45).toFixed(2),
+        "--alpha": (0.5 + depth * 0.45).toFixed(2),
         "--blur": depth < 0.25 && !compact ? "1px" : "0px",
-        "--tone-light": light,
-        "--tone": tone,
-        "--tone-dark": dark,
       } as CSSProperties,
     };
   });
@@ -75,14 +67,14 @@ function petalBudget(): { count: number; compact: boolean } {
   const lowPower = cores <= 4 || memory <= 2;
   const width = window.innerWidth;
 
-  if (width < 768) return { count: lowPower ? 3 : 5, compact: true };
-  if (width < 1280) return { count: lowPower ? 6 : 10, compact: false };
-  return { count: lowPower ? 8 : 16, compact: false };
+  if (width < 768) return { count: lowPower ? 3 : 4, compact: true };
+  if (width < 1280) return { count: lowPower ? 5 : 7, compact: false };
+  return { count: lowPower ? 6 : 10, compact: false };
 }
 
 /**
- * Pétalas de rosa caindo suavemente pelas laterais da página.
- * As pétalas são geradas uma única vez no cliente; todo o movimento é CSS
+ * Pétalas ambientes: depois da abertura, poucas pétalas caem pelas laterais.
+ * São geradas uma única vez no cliente; todo o movimento é CSS
  * (transform/opacity no compositor), sem re-renderizações nem bibliotecas.
  */
 export function Petals() {
@@ -114,7 +106,7 @@ export function Petals() {
           style={petal.style}
         >
           <span className="petal-sway">
-            <span className="petal-shape" />
+            <span className={`petal-shape ${petal.shape}`} />
           </span>
         </span>
       ))}

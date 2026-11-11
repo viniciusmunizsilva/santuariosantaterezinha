@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Emblem } from "@/components/ornaments/Emblem";
-import { Rose } from "@/components/ornaments/Rose";
-import { MapPinIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { Mark } from "@/components/ornaments/Mark";
+import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { navigation, site } from "@/data/site";
 
 export function Header() {
@@ -13,8 +12,8 @@ export function Header() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Fundo marfim translúcido ao sair do topo — observado por sentinela,
-  // sem listener de scroll.
+  // Sobre o hero (vinho) o cabeçalho é transparente; ao rolar, ganha fundo
+  // marfim. Observado por sentinela, sem listener de scroll.
   useEffect(() => {
     const sentinel = document.getElementById("top-sentinel");
     if (!sentinel) return;
@@ -31,7 +30,6 @@ export function Header() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -67,14 +65,14 @@ export function Header() {
     };
   }, [open]);
 
-  const solid = scrolled || open;
+  const light = scrolled && !open; // fundo marfim, texto vinho
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
-        solid
-          ? "bg-ivory/85 shadow-[0_1px_0_rgb(179_148_86/0.35),0_12px_32px_-20px_rgb(101_30_39/0.35)] backdrop-blur-md"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-500 ${
+        light
+          ? "bg-ivory/90 text-wine shadow-[0_1px_0_rgb(179_148_86/0.4)] backdrop-blur-md"
+          : "on-dark bg-transparent text-ivory"
       }`}
     >
       <div
@@ -84,13 +82,21 @@ export function Header() {
       >
         <a
           href="#inicio"
-          className="group flex items-center gap-3 text-wine"
+          className="flex items-center gap-3"
           aria-label={`${site.name} — início`}
           onClick={() => setOpen(false)}
         >
-          <Emblem className="h-11 w-9 transition-transform duration-700 group-hover:rotate-[8deg]" />
-          <span className="font-serif text-[1.35rem] leading-[1.05] font-semibold tracking-wide">
-            <span className="block text-[0.7rem] font-sans font-semibold tracking-[0.28em] uppercase text-gold-deep">
+          <Mark
+            className={`h-10 w-8 transition-colors duration-500 ${
+              light ? "text-wine" : "text-gold-soft"
+            }`}
+          />
+          <span className="font-serif text-[1.3rem] leading-[1.05] font-semibold tracking-wide">
+            <span
+              className={`block font-sans text-[0.62rem] font-semibold tracking-[0.3em] uppercase transition-colors duration-500 ${
+                light ? "text-gold-deep" : "text-gold-soft"
+              }`}
+            >
               Santuário
             </span>
             Santa Teresinha
@@ -98,10 +104,10 @@ export function Header() {
         </a>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-[0.9rem] font-medium text-ink">
+          <ul className="flex items-center gap-8 text-[0.9rem] font-medium">
             {navigation.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="nav-link hover:text-wine">
+                <a href={item.href} className="link">
                   {item.label}
                 </a>
               </li>
@@ -109,40 +115,37 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <a
-            href={site.maps.directions}
+            href={site.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex"
+            className={`btn hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex ${
+              light ? "btn-wine" : "btn-line-light"
+            }`}
           >
-            <MapPinIcon className="size-4" />
-            Como chegar
+            <WhatsAppIcon className="size-[1.1rem]" />
+            WhatsApp
           </a>
 
           <button
             ref={toggleRef}
             type="button"
-            className="relative grid size-12 place-items-center rounded-full text-wine lg:hidden"
+            className="relative -mr-2 grid size-12 place-items-center lg:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             onClick={() => setOpen((value) => !value)}
           >
-            <span className="relative block h-3.5 w-6" aria-hidden="true">
+            <span className="relative block h-3 w-7" aria-hidden="true">
               <span
-                className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${
+                className={`absolute left-0 h-px w-7 bg-current transition-transform duration-500 ${
                   open ? "top-1/2 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute left-0 top-1/2 h-px bg-current transition-all duration-300 ${
-                  open ? "w-0 opacity-0" : "w-4 opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute left-0 h-px w-6 bg-current transition-transform duration-500 ${
-                  open ? "top-1/2 -rotate-45" : "top-full"
+                className={`absolute right-0 h-px bg-current transition-transform duration-500 ${
+                  open ? "top-1/2 w-7 -rotate-45" : "top-full w-4"
                 }`}
               />
             </span>
@@ -155,58 +158,48 @@ export function Header() {
         id={menuId}
         ref={menuRef}
         inert={!open}
-        className={`paper absolute inset-x-0 top-0 -z-10 h-dvh overflow-y-auto px-6 pt-24 pb-10 transition-[opacity,visibility,transform] duration-500 lg:hidden ${
-          open
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-3 opacity-0"
+        className={`on-dark absolute inset-x-0 top-0 -z-10 flex h-dvh flex-col overflow-y-auto bg-wine-night px-6 pt-28 pb-8 text-ivory transition-[opacity,visibility] duration-500 lg:hidden ${
+          open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        <nav aria-label="Menu" className="mx-auto flex max-w-md flex-col">
-          <ul className="border-t border-gold/30">
+        <nav aria-label="Menu">
+          <ul>
             {navigation.map((item, index) => (
-              <li key={item.href} className="border-b border-gold/30">
+              <li key={item.href} className="border-b border-gold/25">
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center justify-between py-4 font-serif text-[1.7rem] font-medium text-wine transition-[opacity,transform] duration-500 ${
-                    open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+                  className={`flex items-baseline gap-4 py-4 font-serif text-[2rem] leading-tight transition-[opacity,transform] duration-500 ${
+                    open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
                   }`}
-                  style={{ transitionDelay: open ? `${80 + index * 50}ms` : "0ms" }}
+                  style={{ transitionDelay: open ? `${90 + index * 55}ms` : "0ms" }}
                 >
+                  <span className="font-sans text-[0.65rem] font-semibold tracking-[0.2em] text-gold-soft">
+                    0{index + 1}
+                  </span>
                   {item.label}
-                  <Rose variant="line" className="size-5 text-gold" />
                 </a>
               </li>
             ))}
           </ul>
+        </nav>
 
+        <div className="mt-auto grid gap-3 pt-10">
           <a
-            href={site.maps.directions}
+            href={site.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary mt-8 w-full"
+            className="btn btn-ivory w-full"
             onClick={() => setOpen(false)}
           >
-            <MapPinIcon className="size-4" />
-            Como chegar
+            <WhatsAppIcon className="size-5" />
+            WhatsApp {site.whatsapp.label}
           </a>
-
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <a href={site.phone.href} className="btn btn-outline !px-3 text-sm">
-              <PhoneIcon className="size-4" />
-              Ligar
-            </a>
-            <a
-              href={site.whatsapp.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline !px-3 text-sm"
-            >
-              <WhatsAppIcon className="size-4" />
-              WhatsApp
-            </a>
-          </div>
-        </nav>
+          <a href={site.phone.href} className="btn btn-line-light w-full">
+            <PhoneIcon className="size-5" />
+            {site.phone.label}
+          </a>
+        </div>
       </div>
     </header>
   );
